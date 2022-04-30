@@ -11,6 +11,7 @@ import UsersPage from "../pages/admin/UsersPage";
 import Layout from "../components/layouts/Layout";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import ROLES from '../helpers/roles.js'
 
 export default function AppRouter() {
   return (
@@ -76,7 +77,7 @@ export default function AppRouter() {
               exact
               path="/admin/users"
               element={
-                <PrivateRoute hasRole="admin">
+                <PrivateRoute hasRole={ROLES.admin}>
                   <UsersPage />
                 </PrivateRoute>
               }
