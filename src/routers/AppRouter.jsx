@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -7,8 +7,6 @@ import ProjectsPage from "../pages/ProjectsPage";
 import ProjectPage from "../pages/ProjectPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import UsersPage from "../pages/admin/UsersPage";
-
-import Layout from "../components/layouts/Layout";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import ROLES from '../helpers/roles.js'
@@ -16,8 +14,6 @@ import ROLES from '../helpers/roles.js'
 export default function AppRouter() {
   return (
     <>
-      <Router>
-        <Layout>
           <Routes>
             <Route
               exact
@@ -85,8 +81,6 @@ export default function AppRouter() {
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </Layout>
-      </Router>
     </>
   );
 }

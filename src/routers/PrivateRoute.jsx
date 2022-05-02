@@ -1,18 +1,16 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../components/auth/useAuth";
 
 const PrivateRoute = (props) => {
+  const location = useLocation();
+  // console.log(location);
   const {isAuth, isRole} = useAuth();
   const {hasRole: role, children} = props;
 
 
-  // console.log(props)
-  // console.log(user.role)
-  // console.log(children)
-
   if (role && !isRole(role)) return <Navigate to="/" />;
-  if (!isAuth()) return <Navigate to="/login" />;
+  if (!isAuth()) return <Navigate to={{pathname: "/login"}} state={{from: location}} />;
   return children;
 
   //   return <Route {...props} />;
