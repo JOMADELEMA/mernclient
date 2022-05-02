@@ -1,8 +1,12 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import useAuth from "./auth/useAuth";
 
 const Navigation = () => {
+
+  const {logout} = useAuth();
+
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark">
       <Navbar.Brand as={NavLink} to="/">
@@ -31,6 +35,9 @@ const Navigation = () => {
           </Nav.Link>
           <Nav.Link as={NavLink} to="/account">
             Mi Cuenta
+          </Nav.Link>
+          <Nav.Link to="/account" onClick={()=>logout()}>
+            Cerrar Sesión
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

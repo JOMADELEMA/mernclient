@@ -12,7 +12,7 @@ const PrivateRoute = (props) => {
   // console.log(children)
 
   if (role && !isRole(role)) return <Navigate to="/" />;
-  if (!isAuth) return <Navigate to="/login" />;
+  if (!isAuth()) return <Navigate to="/login" />;
   return children;
 
   //   return <Route {...props} />;

@@ -5,7 +5,7 @@ import useAuth from "../components/auth/useAuth";
 const PublicRoute = ({children}) => {
   const {isAuth} = useAuth();
   
-  if (isAuth) return <Navigate to="/projects" />;
+  if (isAuth()) return <Navigate to="/projects" />;
   return children;
 
 };

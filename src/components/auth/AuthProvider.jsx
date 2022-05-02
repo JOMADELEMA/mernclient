@@ -4,26 +4,28 @@ import ROLES from '../../helpers/roles';
 export const AuthContext = createContext();
 
 export default function AuthProvider({children}) {
-  // const [user, setUser] = useState(true);
-  const [user, setUser] = useState(
-    {
-      id: 1, 
-      role: ROLES.admin,
-    }
-  );
+  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(
+  //   {
+  //     id: 1, 
+  //     role: ROLES.admin,
+    
+  //   }
+  // );
 
-  // setUser(null)
+  const login = (userCredentials) => setUser({id: 2, role: ROLES.admin});
+  const logout = () =>setUser(null);
 
   const isAuth = () => !!user;
   const isRole = (role) => user?.role === role;
-  // const isAuth = false;
-
-  // console.log(isAuth());
   
+  console.log(isAuth())
   const contextValue = {
     user,
     isAuth,
     isRole, 
+    login, 
+    logout,
   };
 
   return <AuthContext.Provider value={contextValue}> {children}</AuthContext.Provider>;
