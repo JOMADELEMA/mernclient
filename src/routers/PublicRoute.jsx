@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 import useAuth from "../components/auth/useAuth";
 
 const PublicRoute = ({children}) => {
-  const {user} = useAuth();
+  const {isAuth} = useAuth();
   
-  if (user) return <Navigate to="/projects" />;
+  if (isAuth) return <Navigate to="/projects" />;
   return children;
 
 };
