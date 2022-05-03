@@ -7,17 +7,10 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
-  // const [user, setUser] = useState(
-  //   {
-  //     id: 1,
-  //     role: ROLES.admin,
-
-  //   }
-  // );
 
   const login = (userCredentials, fromLocation) => {
     console.log(fromLocation);
-    setUser({ id: 2, role: ROLES.admin });
+    setUser({ id: 2, name: "JOMA", email: "jomadelema@ejemplo.com",role: ROLES.admin });
     if (fromLocation) {
       navigate(fromLocation);
     }
@@ -38,7 +31,6 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={contextValue}>
-      {" "}
       {children}
     </AuthContext.Provider>
   );
