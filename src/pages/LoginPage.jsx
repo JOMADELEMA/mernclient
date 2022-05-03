@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import useAuth from "../components/auth/useAuth";
-import ROLES from "../helpers/roles";
 
 function LoginPage() {
   const { login } = useAuth();
