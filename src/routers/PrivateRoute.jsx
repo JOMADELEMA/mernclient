@@ -9,7 +9,7 @@ const PrivateRoute = (props) => {
   const {hasRole: role, children} = props;
 
 
-  if (role && !isRole(role)) return <Navigate to="/" />;
+  if (role && !isRole(role)) return <Navigate to="/login" />;
   if (!isAuth()) return <Navigate to={{pathname: "/login"}} state={{from: location}} />;
   return children;
 
