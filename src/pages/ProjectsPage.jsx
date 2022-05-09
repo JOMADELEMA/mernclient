@@ -4,24 +4,55 @@ import axios from "axios";
 
 const url = "http://localhost:3100/posts/listar-posts";
 
+axios.defaults.withCredentials = true;
+
 const ProjectsPage = () => {
   const [posts, setPosts] = useState([]);
 
   const obtenerDatos = async () => {
-    try {
-      const consulta = await axios.get(url);
-      const respuesta = await consulta.data;
 
-      setPosts(respuesta.data);
-      console.log(respuesta.data);
-    } catch (error) {
-      console.log(error);
-    }
+    // fetch(url, {
+    //   method: 'GET',
+    //   credentials: 'include',
+    // })
+    // .then((res) => res.json())
+    // .then((json) => {
+    //     console.log(json);
+    // })
+    // .catch((err) => {
+    //     console.log(err);
+    // });
+
+
+
+
+    // try {
+    const consulta = await axios
+      // .get(url, {withCredentials: true, xsrfCookieName: "access-token", xsrfHeaderName: "access-token"})
+      .get(url)
+      .then((respuesta) => {
+        console.log("acá está la respuesta");
+        console.log(respuesta.data.data);
+        setPosts(respuesta.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .then(function () {
+        console.log("funcion que siempre se ejecuta");
+      });
+    // const respuesta = await consulta.data;
+
+    // setPosts(respuesta.data);
+    // console.log(respuesta.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
-  useEffect(() => {
-    obtenerDatos();
-  }, []);
+  // useEffect(() => {
+  //   obtenerDatos();
+  // }, []);
 
   return (
     <>
@@ -42,14 +73,15 @@ const ProjectsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {posts && posts.map((item) => (
-                  <tr key={item.id_post}>
-                    <td>{item.id_post}</td>
-                    <td>{item.texto}</td>
-                    <td>{item.fecha_creacion}</td>
-                    <td>{item.id_usuario}</td>
-                  </tr>
-                ))}
+                {posts &&
+                  posts.map((item) => (
+                    <tr key={item.id_post}>
+                      <td>{item.id_post}</td>
+                      <td>{item.texto}</td>
+                      <td>{item.fecha_creacion}</td>
+                      <td>{item.id_usuario}</td>
+                    </tr>
+                  ))}
               </tbody>
             </Table>
           </Col>
