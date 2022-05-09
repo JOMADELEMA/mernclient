@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import useAuth from "../components/auth/useAuth";
