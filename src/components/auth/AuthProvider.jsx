@@ -1,7 +1,11 @@
 import { useState, createContext } from "react";
 import ROLES from "../../helpers/roles";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
+
 export const AuthContext = createContext();
+
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -10,11 +14,31 @@ export default function AuthProvider({ children }) {
 
   const login = (userCredentials, fromLocation) => {
     console.log(fromLocation);
-    setUser({ id: 2, name: "JOMA", email: "jomadelema@ejemplo.com",role: ROLES.admin });
+    setUser({ id_usuario: userCredentials.id_usuario, role: "admin"});
     if (fromLocation) {
       navigate(fromLocation);
     }
   };
+
+
+  // const login = (userCredentials, fromLocation) => {
+  //   console.log(fromLocation);
+  //   setUser({ id_usuario: userCredentials.id_usuario, role: "admin"});
+  //   if (fromLocation) {
+  //     navigate(fromLocation);
+  //   }
+  // };
+
+  
+  // const login = (userCredentials, fromLocation) => {
+  //   console.log(fromLocation);
+  //   setUser({ id: 2, name: "JOMA", email: "jomadelema@ejemplo.com",role: ROLES.admin });
+  //   if (fromLocation) {
+  //     navigate(fromLocation);
+  //   }
+  // };
+
+
   const logout = () => setUser(null);
 
   const isAuth = () => !!user;
