@@ -73,7 +73,7 @@ const ProjectsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {posts &&
+                {posts?.length ?
                   posts.map((item) => (
                     <tr key={item.id_post}>
                       <td>{item.id_post}</td>
@@ -81,7 +81,14 @@ const ProjectsPage = () => {
                       <td>{item.fecha_creacion}</td>
                       <td>{item.id_usuario}</td>
                     </tr>
-                  ))}
+                  ))
+                  :
+                  <tr key={0}>
+                      <td colSpan={4}>No hay posts para mostrar</td>
+                      
+                    </tr>
+                  
+                }
               </tbody>
             </Table>
           </Col>

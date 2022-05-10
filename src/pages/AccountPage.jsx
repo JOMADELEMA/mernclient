@@ -26,15 +26,15 @@ const AccountPage = () => {
           <Card className="shadow mx-auto p-5" style={{maxWidth: "360px"}}>
             <p className="text-center">
               <b>Nombre: </b>
-              {user.name}
+              {user.nombre}
             </p>
             <p className="text-center">
-              <b>e-mail: </b>
-              {user.email}
+              <b>ID Usuario: </b>
+              {user.id_usuario}
             </p>
             <p className="text-center">
               <b>Rol: </b>
-              {user.role}
+              {user.id_rol}
             </p>
 
             <Button variant="warning">Editar Cuenta</Button>
