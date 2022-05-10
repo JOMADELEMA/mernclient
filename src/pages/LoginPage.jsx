@@ -1,13 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import useAuth from "../components/auth/useAuth";
+
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 function LoginPage() {
   const { login } = useAuth();
   const location = useLocation();
-
-  // console.log(location.state.from.pathname);
 
   const getCredentials = (e) => {
     e.preventDefault();
@@ -17,7 +16,7 @@ function LoginPage() {
       contrasena: e.target[1].value,
     };
 
-    login(userCredentials, location.state?.from);
+        login(userCredentials, location.state?.from);
   };
 
   return (
@@ -50,10 +49,6 @@ function LoginPage() {
           </Col>
         </Row>
       </Container>
-
-      {/* <button onClick={() => login(userCredentials, location.state?.from)}>
-        Iniciar Sesión
-      </button> */}
     </>
   );
 }
