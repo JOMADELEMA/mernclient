@@ -3,7 +3,10 @@ import { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+import jwtDecode from "jwt-decode";
+
 export const AuthContext = createContext();
+
 
 const url = "http://localhost:3100/auth/login";
 
@@ -22,9 +25,17 @@ export default function AuthProvider({ children }) {
         contrasena: userCredentials.contrasena,
       }).then((respuesta)=>{
         setUser({
-          name: respuesta.data.data.id_usuario,
-          role: "admin",
+          id_usuario: respuesta.data.data.id_usuario,
+          nombre: respuesta.data.data.nombre,
+          id_rol: respuesta.data.data.id_rol,
+          token: respuesta.data.token,
         });
+
+        var token = respuesta.data.token;
+        var decoded = jwtDecode(token);
+
+        console.log("decodade jwt");
+        console.log(decoded);
       })
     } catch (error){
       console.log(error)
