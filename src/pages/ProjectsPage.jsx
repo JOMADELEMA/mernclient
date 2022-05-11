@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Table } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
 import axios from "axios";
 import useAuth from "../components/auth/useAuth";
 import { Navigate } from "react-router-dom";
+
+import "./ProjectsPage.css";
 
 const url = "http://localhost:3100/posts/listar-mis-posts";
 
@@ -43,9 +52,39 @@ const ProjectsPage = () => {
               {user.nombre} + {user.id_usuario} - ProjectsPage
             </h1>
 
-            <button className="btn btn-primary" onClick={() => obtenerDatos()}> Agregar Post </button>
+            <button className="btn btn-primary" onClick={() => obtenerDatos()}>
+              {" "}
+              Agregar Post{" "}
+            </button>
 
-            <Table striped bordered hover variant="dark" className="mt-5">
+            {posts?.length ? (
+              posts.map((item) => (
+                <div className="contenedor-tarjeta-proyecto">
+                  <div className="encabezado-tarjeta-proyecto">
+                    <h4>{item.id_post}</h4>
+                  </div>
+                  <div className="cuerpo-tarjeta-proyecto">
+                    <div className="texto-tarjeta">{item.texto}</div>
+                    <div className="menu-tarjeta">
+                      <DropdownButton
+                        variant="none"
+                        style={{ otuline: "none" }}
+                        title="&#8226;&#8226;&#8226;"
+                      >
+                        <Dropdown.Item>Ver</Dropdown.Item>
+
+                        <Dropdown.Item>Editar</Dropdown.Item>
+
+                        <Dropdown.Item>Eliminar</Dropdown.Item>
+                      </DropdownButton>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <h1>No hay post para mostrar</h1>
+            )}
+            {/* <Table striped bordered hover variant="dark" className="mt-5">
               <thead>
                 <tr>
                   <th>Id Post</th>
@@ -54,8 +93,8 @@ const ProjectsPage = () => {
                   <th>Id Usuario</th>
                 </tr>
               </thead>
-              <tbody>
-                {posts?.length ? (
+              <tbody> */}
+            {/* {posts?.length ? (
                   posts.map((item) => (
                     <tr key={item.id_post}>
                       <td>{item.id_post}</td>
@@ -70,7 +109,33 @@ const ProjectsPage = () => {
                   </tr>
                 )}
               </tbody>
-            </Table>
+            </Table> */}
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className="contenedor-tarjeta-proyecto">
+              <div className="encabezado-tarjeta-proyecto">
+                <h4>Identificador de proyecto</h4>
+              </div>
+              <div className="cuerpo-tarjeta-proyecto">
+                <div className="texto-tarjeta">Descripcion....</div>
+                <div className="menu-tarjeta">
+                  <DropdownButton
+                    variant="none"
+                    style={{ otuline: "none" }}
+                    title="&#8226;&#8226;&#8226;"
+                  >
+                    <Dropdown.Item>Ver</Dropdown.Item>
+
+                    <Dropdown.Item>Editar</Dropdown.Item>
+
+                    <Dropdown.Item>Eliminar</Dropdown.Item>
+                  </DropdownButton>
+                </div>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

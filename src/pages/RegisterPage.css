@@ -1,0 +1,41 @@
+.contenedor-carta-registro {
+    height: 650px;
+    width: 1000px;
+    border-radius: 10px;
+    background-color: #9cacbfa1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgb(68,68,68) 0px 1px 5px;
+    position: relative;
+}
+
+.titulo {
+    margin-bottom: 25px;
+}
+
+.contenedor-formulario-registro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-inputs-registro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 15px;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.mensaje-contrasena {
+    padding: 10px;
+    background-color: rgba(255, 50 , 50, 0.7);
+    position: absolute;
+    bottom: 150px;
+    border-radius: 10px;
+    font-weight: 600;
+}

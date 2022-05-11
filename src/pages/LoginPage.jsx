@@ -5,6 +5,8 @@ import "./LoginPage.css";
 
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
+
+
 function LoginPage() {
   const { login } = useAuth();
   const location = useLocation();
@@ -19,6 +21,7 @@ function LoginPage() {
 
     login(userCredentials, location.state?.from);
   };
+
 
   return (
     <>
