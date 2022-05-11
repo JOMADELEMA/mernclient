@@ -1,0 +1,60 @@
+.contenedor-tarjeta-proyecto {
+  width: 350px;
+  height: 150px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: rgb(68, 68, 68) 0px 1px 5px;
+}
+
+.encabezado-tarjeta-proyecto {
+  height: 60%;
+  background-color: #2b6684;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.cuerpo-tarjeta-proyecto {
+  background-color: #ffffff;
+  border-radius: 0 0 10px 10px;
+  height: 40%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-toggle {
+  background-color: white;
+  border: white;
+  color: black;
+}
+
+.dropdown-toggle:hover {
+  background-color: #2b6684;
+  border: none;
+}
+.dropdown-toggle-active {
+  background-color: #2b6684 !important;
+  border: none !important;
+  outline: none;
+}
+
+.dropdown-menu {
+  background-color: #ffffff;
+}
+
+.dropdown-border-radius {
+  outline: none;
+  box-shadow: none;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown.container {
+  background-color: red;
+}
