@@ -2,11 +2,16 @@
     background-color: #9cacbfc0;
 }
 
+.active {
+    text-decoration: underline !important;
+    font-weight: 500;
+}
+
 .logo {
     color: #032E42;
 }
 
-.texto-nav {
+.texto-navbar {
     color: #ffffff !important;
 }
 

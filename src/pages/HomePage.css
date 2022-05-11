@@ -1,14 +1,41 @@
+.contenedor {
+    z-index: -1;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.columna {
+    height: 100%;
+
+}
+
 .contenedor-carta {
     /* border: solid black 1px; */
     width: 720px;
     height: 405px;
     border-radius: 10px;
     background-color: #9cacbfa1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgb(68,68,68) 0px 1px 5px;
+}
+
+.titulo-carta {
+    color: #0A1417;
+    font-size: 32px;
+    
 }
 
 .texto-carta { 
     color: #0A1417;
-    padding: 25px;
     font-size: 20px;
     text-align: center;
 }
@@ -19,9 +46,9 @@
     background-color:#032E42 !important;
     width: 250px;
     height: 50px;
-    border: none;
     border-radius: 10px;
-    box-shadow: rgb(68, 68, 68) 0px 2px 1px;
+    box-shadow: rgb(68, 68, 68) 0px 1px 5px;
+    text-decoration: none;
 }
 
 .boton-carta:hover{
