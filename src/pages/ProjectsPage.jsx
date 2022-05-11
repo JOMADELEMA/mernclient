@@ -18,8 +18,8 @@ const ProjectsPage = () => {
         id_usuario: user.id_usuario,
       })
       .then((respuesta) => {
-        console.log("acá está la respuesta");
-        console.log(respuesta.data.data);
+        // console.log("acá está la respuesta");
+        // console.log(respuesta.data.data);
         setPosts(respuesta.data.data);
       })
       .catch((error) => {

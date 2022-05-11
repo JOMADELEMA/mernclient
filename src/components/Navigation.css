@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #9cacbfc0;
+}
+
+.logo {
+    color: #032E42;
+}
+
+.texto-nav {
+    color: #ffffff !important;
+}
+
+.contenedor-logo {
+    border: solid black 0.5px;
+    border-radius: 10px;
+    width: 150px;
+    background-color: #032E42;
+    color: white;
+}
