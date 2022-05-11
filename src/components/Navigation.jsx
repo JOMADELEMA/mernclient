@@ -2,46 +2,59 @@ import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import useAuth from "./auth/useAuth";
+import './Navigation.css';
 
 const Navigation = () => {
 
-  const {logout} = useAuth();
+  const { logout, user } = useAuth();
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark">
-      <Navbar.Brand as={NavLink} to="/">
-        MERN
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav" >
-        <Nav className="me-auto">
-          {/* se puede utilizar "as={componente}" para que un componente se renderice como otro y pueda usar props como el mismo*/}
-          <Nav.Link as={NavLink} to="/projects">
-            Proyectos
-            {/* <NavLink to="/projects">Proyectos</NavLink> */}
-          </Nav.Link>
-          <NavDropdown title="Admin">
-            <NavDropdown.Item as={NavLink} to="/admin/users">
-              Usuarios
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Nav>
-          <Nav.Link as={NavLink} to="/login">
-            Iniciar Sesión
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/register">
-            Registrarse
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/account">
-            Mi Cuenta
-          </Nav.Link>
-          <Nav.Link to="/account" onClick={()=>logout()}>
-            Cerrar Sesión
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <>
+      <Navbar collapseOnSelect expand="lg" className="navbar shadow-sm">
+        <Navbar.Brand as={NavLink} to="/" className="logo ms-1">
+          <div className="contenedor-logo d-flex justify-content-center">
+            MERN
+          </div>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" >
+          <Nav className="ms-auto">
+            {/* se puede utilizar "as={componente}" para que un componente se renderice como otro y pueda usar props como el mismo*/}
+            {user ?
+              <>
+                <Nav.Link as={NavLink} to="/projects" className="texto-navbar">
+                  Proyectos
+                  {/* <NavLink to="/projects">Proyectos</NavLink> */}
+                </Nav.Link>
+                {/* <NavDropdown title="Admin">
+                  <NavDropdown.Item as={NavLink} to="/admin/users">
+                    Usuarios
+                  </NavDropdown.Item>
+                </NavDropdown> */}
+
+                <Nav.Link as={NavLink} to="/register">
+                  Registrarse
+                </Nav.Link>
+                <Nav.Link as={NavLink} to="/account">
+                  Mi Cuenta
+                </Nav.Link>
+                <Nav.Link to="/account" onClick={() => logout()}>
+                  Cerrar Sesión
+                </Nav.Link>
+              </>
+              :
+
+              <Nav.Link as={NavLink} to="/login">
+                <span className="texto-nav"> Iniciar Sesión</span>
+              </Nav.Link>
+
+            }
+
+
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </>
   );
 };
 
