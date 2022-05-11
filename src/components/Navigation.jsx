@@ -31,21 +31,21 @@ const Navigation = () => {
                     Usuarios
                   </NavDropdown.Item>
                 </NavDropdown> */}
-
+{/* 
                 <Nav.Link as={NavLink} to="/register">
                   Registrarse
-                </Nav.Link>
-                <Nav.Link as={NavLink} to="/account">
+                </Nav.Link> */}
+                <Nav.Link as={NavLink} to="/account" className="texto-navbar">
                   Mi Cuenta
                 </Nav.Link>
-                <Nav.Link to="/account" onClick={() => logout()}>
+                <Nav.Link to="/account" onClick={() => logout()} className="texto-navbar">
                   Cerrar Sesión
                 </Nav.Link>
               </>
               :
 
-              <Nav.Link as={NavLink} to="/login">
-                <span className="texto-nav"> Iniciar Sesión</span>
+              <Nav.Link as={NavLink} to="/login" className="texto-navbar">
+                <span> Iniciar Sesión</span>
               </Nav.Link>
 
             }

@@ -1,0 +1,11 @@
+.contenedor-master {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    background-image: url("https://images.pexels.com/photos/3894157/pexels-photo-3894157.jpeg?cs=srgb&dl=pexels-btgl-3894157.jpg&fm=jpg");
+    background-position: center;
+    height: 100vh;
+    z-index: -100;
+    opacity: 1;
+    filter: blur(15px);
+}

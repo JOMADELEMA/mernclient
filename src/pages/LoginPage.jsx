@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import useAuth from "../components/auth/useAuth";
+import "./LoginPage.css";
 
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
@@ -16,36 +17,35 @@ function LoginPage() {
       contrasena: e.target[1].value,
     };
 
-        login(userCredentials, location.state?.from);
+    login(userCredentials, location.state?.from);
   };
 
   return (
     <>
-      <h1 className="text-center mt-5">Inicio de Sesión</h1>
-
-      <Container>
+      <Container className="contenedor" fluid>
         <Row>
-          <Col className="d-flex justify-content-center">
-            <Card className="p-5 shadow mt-5 w-75">
-              <Form onSubmit={getCredentials}>
+          <Col className="columna">
+            <div className="contenedor-carta">
+              <h1 className="text-center">Inicio de Sesión</h1>
+              <Form onSubmit={getCredentials} className="contenedor-formulario">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Id Usuario</Form.Label>
-                  <Form.Control
+                  <Form.Label className="texto-carta">Ingrese su ID de Usuario:</Form.Label>
+                  <Form.Control className="input-formulario"
                     type="text"
-                    placeholder="Ingrese su ID de usuario"
+                    placeholder="ID de Usuario"
                   />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Contraseña</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Label className="texto-carta">Ingrese su Contraseña:</Form.Label>
+                  <Form.Control className="input-formulario" type="password" placeholder="Password" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
+                <button className="boton-carta" type="submit">
+                  <span className="texto-boton-carta">Iniciar Sesión </span>
+                </button>
               </Form>
-            </Card>
+            </div>
           </Col>
         </Row>
       </Container>
