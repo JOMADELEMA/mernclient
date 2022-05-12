@@ -38,13 +38,14 @@ export default function AuthProvider({ children }) {
           console.log(decoded);
         });
     } catch (error) {
+      console.log("error:")
       console.log(error);
     }
     if (fromLocation) {
       navigate(fromLocation);
     }
-    console.log("El usuario es:");
-    console.log(user);
+    // console.log("El usuario es:");
+    // console.log(user);
   };
 
   const logout = () => setUser(null);

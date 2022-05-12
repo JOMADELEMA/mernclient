@@ -9,7 +9,7 @@ const url = "http://localhost:3100/auth/registrar-usuario";
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [correcto, setCorrecto] = useState(true);
-  const [exito, setExito] = useState(false);
+  // const [exito, setExito] = useState(false);
 
   const obtenerFormulario = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ const RegisterPage = () => {
     };
 
     if (
-      confirmarContraseña(formData.contrasena, formData.confirmContrasena) ==
+      confirmarContraseña(formData.contrasena, formData.confirmContrasena) ===
       false
     ) {
       setCorrecto(false);
@@ -32,7 +32,7 @@ const RegisterPage = () => {
     }
 
     if (
-      confirmarContraseña(formData.contrasena, formData.confirmContrasena) ==
+      confirmarContraseña(formData.contrasena, formData.confirmContrasena) ===
       true
     ) {
       setCorrecto(true);
@@ -70,7 +70,7 @@ const RegisterPage = () => {
         contrasena: contrasena,
       })
       .then((respuesta) => {
-        setExito(true);
+        // setExito(true);
         handleShowExito();
       })
       .catch((error) => {
