@@ -27,8 +27,8 @@
 
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   border-radius: 2px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -47,16 +47,16 @@
 .boton-carta {
   display: flex;
   justify-content: center;
-  background-color: #032e42 !important;
+  background-color: #0077cc !important;
   width: 250px;
   height: 50px;
   border-radius: 2px;
-  box-shadow: rgb(68, 68, 68) 0px 1px 5px;
+  box-shadow: rgb(68, 68, 68) 0px 2px 1px;
   text-decoration: none;
 }
 
 .boton-carta:hover {
-  background-color: #2b6684 !important;
+  background-color: #0088dd !important;
   outline: none;
   box-shadow: none;
 }

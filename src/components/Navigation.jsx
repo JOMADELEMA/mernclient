@@ -9,7 +9,7 @@ const Navigation = () => {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="navbar shadow-sm">
+      <Navbar collapseOnSelect expand="lg" className="navbar shadow-sm" sticky="top">
         <Navbar.Brand as={NavLink} to="/" className="logo ms-1">
           <div className="contenedor-logo d-flex justify-content-center">
             MERN

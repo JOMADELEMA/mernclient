@@ -45,7 +45,7 @@ const ProjectsPage = () => {
         <Row>
           <Col className="contenedor-ui-proyectos">
             <div className="titulo w-100">
-              <h1>
+              <h1 className="texto-titulo">
                 ProjectsPage
               </h1>
 

@@ -1,19 +1,31 @@
 .titulo {
+  color: white;
   margin-top: 1%;
   display: flex;
   justify-content: space-between;
+  
+}
+
+.texto-titulo {
+  /* text-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.9) !important; */
+  text-shadow: 0px 2px 5px rgba(31, 38, 135, 0.9);
 }
 
 .boton-agregar-post {
-  border: none;
-  background-color: skyblue;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .boton-agregar-post:hover {
-  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-
 
 .menu {
   display: flex;
@@ -37,16 +49,16 @@
   height: 150px;
   flex: 1 1 350px;
 
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(59, 167, 255, 0.7);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  /* backdrop-filter: blur( 6px );
-  -webkit-backdrop-filter: blur( 6px ); */
+  /* backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px ); */
   border-radius: 2px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .contenedor-tarjeta-proyecto:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(59, 167, 255, 0.9);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
   /* backdrop-filter: blur( 6px );
   -webkit-backdrop-filter: blur( 6px ); */
@@ -78,7 +90,7 @@
 .boton-dropdown {
   background-color: white;
   text-decoration: none;
-  color: #032e42;
+  color: #0077cc;
   padding: 10px;
   border-radius: 2px;
 }
@@ -86,7 +98,7 @@
 .boton-dropdown:hover {
   text-decoration: none;
   background-color: white;
-  color: #032e42;
+  color: #0077cc;
 }
 
 .separador-dropdown-menu {
@@ -108,6 +120,6 @@
 }
 
 .dropdown-item:hover {
-  background-color: #2b6684 !important;
+  background-color: #0077cc !important;
   color: white !important;
 }
