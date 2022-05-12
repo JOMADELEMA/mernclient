@@ -1,41 +1,44 @@
 .contenedor-carta-registro {
-    height: 650px;
-    width: 1000px;
-    border-radius: 10px;
-    background-color: #9cacbfa1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: rgb(68,68,68) 0px 1px 5px;
-    position: relative;
+  height: 650px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .titulo {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .contenedor-formulario-registro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .contenedor-inputs-registro {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 15px;
-    padding: 10px;
-    margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 15px;
+  padding: 10px;
+  margin-bottom: 50px;
 }
 
 .mensaje-contrasena {
-    padding: 10px;
-    background-color: rgba(255, 50 , 50, 0.7);
-    position: absolute;
-    bottom: 150px;
-    border-radius: 10px;
-    font-weight: 600;
+  padding: 10px;
+  background-color: rgba(255, 50, 50, 0.7);
+  position: absolute;
+  bottom: 150px;
+  border-radius: 10px;
+  font-weight: 600;
 }

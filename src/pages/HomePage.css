@@ -1,64 +1,67 @@
 .contenedor {
-    z-index: -1;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  z-index: -1;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .columna {
-    height: 100%;
-
+  height: 100%;
 }
 
 .contenedor-carta {
-    /* border: solid black 1px; */
-    width: 720px;
-    height: 405px;
-    border-radius: 10px;
-    background-color: #9cacbfa1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: rgb(68,68,68) 0px 1px 5px;
+  /* border: solid black 1px; */
+  width: 720px;
+  height: 405px;
+  /* border-radius: 2px; */
+  /* background-color: #9cacbfa1; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: rgb(68, 68, 68) 0px 1px 5px; */
+
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .titulo-carta {
-    color: #0A1417;
-    font-size: 32px;
-    
+  color: #0a1417;
+  font-size: 32px;
 }
 
-.texto-carta { 
-    color: #0A1417;
-    font-size: 20px;
-    text-align: center;
+.texto-carta {
+  color: #0a1417;
+  font-size: 20px;
+  text-align: center;
 }
 
 .boton-carta {
-    display: flex;
-    justify-content: center;
-    background-color:#032E42 !important;
-    width: 250px;
-    height: 50px;
-    border-radius: 10px;
-    box-shadow: rgb(68, 68, 68) 0px 1px 5px;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  background-color: #032e42 !important;
+  width: 250px;
+  height: 50px;
+  border-radius: 2px;
+  box-shadow: rgb(68, 68, 68) 0px 1px 5px;
+  text-decoration: none;
 }
 
-.boton-carta:hover{
-    background-color: #2B6684 !important;
-    outline: none;
-    box-shadow: none;
+.boton-carta:hover {
+  background-color: #2b6684 !important;
+  outline: none;
+  box-shadow: none;
 }
 
 .texto-boton-carta {
-    color: white;
-    align-self: center;
-    
+  color: white;
+  align-self: center;
 }
