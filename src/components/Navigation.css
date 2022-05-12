@@ -1,24 +1,22 @@
 .navbar {
-    background-color: #9cacbfc0;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .active {
-    text-decoration: underline !important;
-    font-weight: 500;
-}
-
-.logo {
-    color: #032E42;
+  text-decoration: underline !important;
+  font-weight: 500;
+  text-decoration-color: white;
 }
 
 .texto-navbar {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .contenedor-logo {
-    border: solid black 0.5px;
-    border-radius: 10px;
-    width: 150px;
-    background-color: #032E42;
-    color: white;
+  width: 250px;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
 }
