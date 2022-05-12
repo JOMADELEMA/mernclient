@@ -7,6 +7,7 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import useAuth from "../components/auth/useAuth";
+import { useNavigate } from "react-router-dom";
 import { Plus } from "tabler-icons-react";
 
 import "./ProjectsPage.css";
@@ -15,10 +16,12 @@ const url = "http://localhost:3100/posts/listar-mis-posts";
 
 axios.defaults.withCredentials = true;
 
+
 const ProjectsPage = () => {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
-
+  
+  const navigate = useNavigate();
   const obtenerDatos = async () => {
     const consulta = await axios
       .post(url, {
@@ -35,6 +38,12 @@ const ProjectsPage = () => {
       });
   };
 
+  const redirigir = () => {
+    navigate("/project/new-project");
+  }
+
+  
+
   useEffect(() => {
     obtenerDatos();
   }, []);
@@ -49,7 +58,7 @@ const ProjectsPage = () => {
                 ProjectsPage
               </h1>
 
-              <Plus size="48px" color="white" className="boton-agregar-post" onClick={() => obtenerDatos()} />
+              <Plus size="48px" color="white" className="boton-agregar-post" onClick={() => redirigir()} />
 
             </div>
 

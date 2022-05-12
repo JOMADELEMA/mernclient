@@ -1,0 +1,19 @@
+.contenedor-carta-cuenta {
+    /* border: solid black 1px; */
+    width: 550px;
+    height: 550px;
+    /* border-radius: 2px; */
+    /* background-color: #9cacbfa1; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: rgb(68, 68, 68) 0px 1px 5px; */
+  
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
