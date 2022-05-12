@@ -5,6 +5,7 @@ import RegisterPage from "../pages/RegisterPage";
 import AccountPage from "../pages/AccountPage";
 import ProjectsPage from "../pages/ProjectsPage";
 import ProjectPage from "../pages/ProjectPage";
+import AddProjectPage from "../pages/AddProjectPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import UsersPage from "../pages/admin/UsersPage";
 import PrivateRoute from "./PrivateRoute";
@@ -57,6 +58,15 @@ export default function AppRouter() {
               element={
                 <PrivateRoute>
                   <ProjectsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/project/new-project"
+              element={
+                <PrivateRoute>
+                  <AddProjectPage />
                 </PrivateRoute>
               }
             />

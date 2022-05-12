@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import useAuth from "../components/auth/useAuth";
+import './AccountPage.css'
 
 const AccountPage = () => {
   const { user } = useAuth();
@@ -8,9 +9,10 @@ const AccountPage = () => {
   return (
     <>
       <Container>
-        <Row className="m-5">
-          <Col xs={12} className="text-center mb-4">
-            {/* <img src="/img/male_avatar.svg" alt="profile avatar" style={{width: "200px", height: "200px", borderRadius: "50%"}}/> */}
+        <Row className="m-5 p-5">
+          <div
+            className="contenedor-carta-cuenta mx-auto pt-5"
+          >
             <img
               src="/img/male_avatar.svg"
               // src="https://i.blogs.es/cc4462/screenshot_10/450_1000.png"
@@ -22,8 +24,6 @@ const AccountPage = () => {
                 objectFit: "cover",
               }}
             />
-          </Col>
-          <Card className="shadow mx-auto p-5" style={{maxWidth: "360px"}}>
             <p className="text-center">
               <b>Nombre: </b>
               {user.nombre}
@@ -37,10 +37,16 @@ const AccountPage = () => {
               {user.id_rol}
             </p>
 
-            <Button variant="warning">Editar Cuenta</Button>
-            <Button variant="link" className="mt-1">Cambiar Contraseña</Button>
-            <Button variant="link" className="text-danger">Eliminar Cuenta</Button>
-          </Card>
+            <button className="boton-carta">
+              <span className="texto-boton-carta"> Editar Cuenta</span>{" "}
+            </button>
+            <Button variant="link" className="mt-1">
+              Cambiar Contraseña
+            </Button>
+            <Button variant="link" className="text-danger">
+              Eliminar Cuenta
+            </Button>
+          </div>
         </Row>
       </Container>
     </>
