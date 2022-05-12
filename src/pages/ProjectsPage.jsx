@@ -3,13 +3,11 @@ import {
   Container,
   Row,
   Col,
-  Table,
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
 import axios from "axios";
 import useAuth from "../components/auth/useAuth";
-import { Navigate } from "react-router-dom";
 
 import "./ProjectsPage.css";
 
@@ -49,12 +47,11 @@ const ProjectsPage = () => {
         <Row>
           <Col>
             <h1>
-              {user.nombre} + {user.id_usuario} - ProjectsPage
+              ProjectsPage
             </h1>
 
             <button className="btn btn-primary" onClick={() => obtenerDatos()}>
-              {" "}
-              Agregar Post{" "}
+              Agregar Post
             </button>
 
             {posts?.length ? (
@@ -84,32 +81,6 @@ const ProjectsPage = () => {
             ) : (
               <h1>No hay post para mostrar</h1>
             )}
-            {/* <Table striped bordered hover variant="dark" className="mt-5">
-              <thead>
-                <tr>
-                  <th>Id Post</th>
-                  <th>Texto</th>
-                  <th>Fecha</th>
-                  <th>Id Usuario</th>
-                </tr>
-              </thead>
-              <tbody> */}
-            {/* {posts?.length ? (
-                  posts.map((item) => (
-                    <tr key={item.id_post}>
-                      <td>{item.id_post}</td>
-                      <td>{item.texto}</td>
-                      <td>{item.fecha_creacion}</td>
-                      <td>{item.id_usuario}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr key={0}>
-                    <td colSpan={4}>No hay posts para mostrar</td>
-                  </tr>
-                )}
-              </tbody>
-            </Table> */}
           </Col>
         </Row>
 
