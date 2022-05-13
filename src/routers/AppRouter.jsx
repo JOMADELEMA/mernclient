@@ -71,8 +71,8 @@ export default function AppRouter() {
               }
             />
             <Route
-              exact
-              path="/project/:projectId"
+              
+              path="/projects/:id_post"
               element={
                 <PrivateRoute>
                   <ProjectPage />
