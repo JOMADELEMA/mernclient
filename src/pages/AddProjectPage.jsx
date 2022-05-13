@@ -15,13 +15,11 @@ const AddProjectPage = () => {
     e.preventDefault();
 
     const formData = {
-      id_post: e.target[0].value,
-      texto: e.target[1].value,
-      fecha_creacion: e.target[2].value,
+      texto: e.target[0].value,
+      fecha_creacion: e.target[1].value,
     };
 
     agregarPost(
-      formData.id_post,
       formData.texto,
       formData.fecha_creacion,
       user.id_usuario
@@ -29,14 +27,12 @@ const AddProjectPage = () => {
   };
 
   const agregarPost = async (
-    id_post,
     texto,
     fecha_creacion,
     id_usuario,
   ) => {
     const registro = await axios
       .post(url, {
-        id_post: id_post,
         texto: texto,
         fecha_creacion: fecha_creacion,
         id_usuario: id_usuario,
@@ -64,7 +60,7 @@ const AddProjectPage = () => {
 
   const handleCloseExito = () => {
     setShowError(false);
-      redirigir();
+    redirigir();
   };
 
   const handleShowExito = () => setShowExito(true);
@@ -81,17 +77,7 @@ const AddProjectPage = () => {
                 className="contenedor-formulario-registro"
               >
                 <div className="contenedor-inputs-registro">
-                  <Form.Group className="mb-3" controlId="formIDProyecto">
-                    <Form.Label className="texto-carta">
-                      ID Proyecto:
-                    </Form.Label>
-                    <Form.Control
-                      className="input-formulario"
-                      type="text"
-                      placeholder="ID de Proyecto"
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formDescripcion">
+                  <Form.Group className="m-3" controlId="formDescripcion">
                     <Form.Label className="texto-carta">
                       Ingrese la descripcion:
                     </Form.Label>
@@ -101,14 +87,13 @@ const AddProjectPage = () => {
                       placeholder="Descripcion..."
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formFecha">
+                  <Form.Group className="m-3" controlId="formFecha">
                     <Form.Label className="texto-carta">
                       Ingrese la fecha:
                     </Form.Label>
                     <Form.Control
                       className="input-formulario"
                       type="date"
-                      //   placeholder=""
                     />
                   </Form.Group>
                 </div>
@@ -151,7 +136,7 @@ const AddProjectPage = () => {
           <Modal.Title>Exito</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          El Usuario se registró exitosamente, Redirigiendo....
+          El Post se agregó exitosamente, Redirigiendo....
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseExito}>
