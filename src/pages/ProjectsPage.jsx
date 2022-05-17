@@ -11,14 +11,14 @@ import { Plus } from "tabler-icons-react";
 
 import "./ProjectsPage.css";
 
-const url = "http://localhost:3100/posts/listar-mis-posts";
+const url = "http://localhost:3100/proyectos/listar-mis-proyectos";
 
 axios.defaults.withCredentials = true;
 
 
 const ProjectsPage = () => {
   const { user } = useAuth();
-  const [posts, setPosts] = useState([]);
+  const [proyectos, setProyectos] = useState([]);
 
   const navigate = useNavigate();
   const obtenerDatos = async () => {
@@ -27,7 +27,7 @@ const ProjectsPage = () => {
         id_usuario: user.id_usuario,
       })
       .then((respuesta) => {
-        setPosts(respuesta.data.data);
+        setProyectos(respuesta.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -72,14 +72,14 @@ const ProjectsPage = () => {
 
             <div className="contenedor-tarjetas">
 
-              {posts?.length ? (
-                posts.map((item) => (
-                  <div key={item.id_post} className="contenedor-tarjeta-proyecto">
+              {proyectos?.length ? (
+                proyectos.map((item) => (
+                  <div key={item.id_proyecto} className="contenedor-tarjeta-proyecto">
                     <div className="encabezado-tarjeta-proyecto">
-                      <h4>{item.id_post}</h4>
+                      <h4>{item.id_proyecto}</h4>
                     </div>
                     <div className="cuerpo-tarjeta-proyecto">
-                      <div className="texto-tarjeta">{acortarTexto(item.texto)}</div>
+                      <div className="texto-tarjeta">{acortarTexto(item.descripcion)}</div>
                       <div className="menu-tarjeta">
                         <div className="dropdown"
                         >
@@ -87,7 +87,7 @@ const ProjectsPage = () => {
                             &#8226;&#8226;&#8226;
                           </div>
                           <ul className="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
-                            <li className="dropdown-item"> <Link className="dropdown-item" to={`${item.id_post}`}>Ver</Link></li>
+                            <li className="dropdown-item"> <Link className="dropdown-item" to={`${item.id_proyecto}`}>Ver</Link></li>
                             <li className="separador-dropdown-menu"></li>
                             <li className="dropdown-item"><Link className="dropdown-item" to="#">Editar</Link></li>
                             <li className="separador-dropdown-menu"></li>

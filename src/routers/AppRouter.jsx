@@ -72,7 +72,7 @@ export default function AppRouter() {
             />
             <Route
               
-              path="/projects/:id_post"
+              path="/projects/:id_proyecto"
               element={
                 <PrivateRoute>
                   <ProjectPage />
