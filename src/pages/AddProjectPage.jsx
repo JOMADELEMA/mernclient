@@ -4,7 +4,7 @@ import { Container, Col, Row, Modal, Form, Button } from "react-bootstrap";
 import useAuth from "../components/auth/useAuth";
 import { useNavigate } from "react-router-dom";
 
-const url = "http://localhost:3100/posts/agregar-post";
+const url = "http://localhost:3100/proyectos/agregar-proyecto";
 
 const AddProjectPage = () => {
   const navigate = useNavigate();
@@ -15,25 +15,19 @@ const AddProjectPage = () => {
     e.preventDefault();
 
     const formData = {
-      texto: e.target[0].value,
-      fecha_creacion: e.target[1].value,
+      descripcion: e.target[0].value,
+      comentarios: e.target[1].value,
+      fecha_creacion: e.target[2].value,
     };
 
-    agregarPost(
-      formData.texto,
-      formData.fecha_creacion,
-      user.id_usuario
-    );
+    agregarPost(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
   };
 
-  const agregarPost = async (
-    texto,
-    fecha_creacion,
-    id_usuario,
-  ) => {
+  const agregarPost = async (descripcion, comentarios, fecha_creacion, id_usuario) => {
     const registro = await axios
       .post(url, {
-        texto: texto,
+        descripcion: descripcion,
+        comentarios: comentarios, 
         fecha_creacion: fecha_creacion,
         id_usuario: id_usuario,
       })
@@ -87,14 +81,21 @@ const AddProjectPage = () => {
                       placeholder="Descripcion..."
                     />
                   </Form.Group>
+                  <Form.Group className="m-3" controlId="formComentarios">
+                    <Form.Label className="texto-carta">
+                      Ingrese comentarios:
+                    </Form.Label>
+                    <Form.Control
+                      className="input-formulario"
+                      type="text"
+                      placeholder="Comentarios..."
+                    />
+                  </Form.Group>
                   <Form.Group className="m-3" controlId="formFecha">
                     <Form.Label className="texto-carta">
                       Ingrese la fecha:
                     </Form.Label>
-                    <Form.Control
-                      className="input-formulario"
-                      type="date"
-                    />
+                    <Form.Control className="input-formulario" type="date" />
                   </Form.Group>
                 </div>
 
