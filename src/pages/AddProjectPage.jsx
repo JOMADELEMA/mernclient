@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Col, Row, Modal, Form, Button } from "react-bootstrap";
 import useAuth from "../components/auth/useAuth";
 import { useNavigate } from "react-router-dom";
+import "./AddProjectPage.css";
 
 const url = "http://localhost:3100/proyectos/agregar-proyecto";
+const urlEtiquetas = "http://localhost:3100/etiquetas/listar-etiquetas";
 
 const AddProjectPage = () => {
   const navigate = useNavigate();
@@ -28,35 +30,77 @@ const AddProjectPage = () => {
     // agregarPost(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
   };
 
+  const listarEtiquetas = async () => {
+    axios
+      .get(urlEtiquetas)
+      .then((respuesta) => {
+        // console.log(respuesta.data.data);
+        setEtiquetas(respuesta.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    listarEtiquetas();
+  }, []);
+
+  const quitarEtiqueta = (pEtiqueta) => {
+    const nuevoArray = etiquetas.filter((etiqueta) => etiqueta != pEtiqueta);
+    console.log("este array reemplaza el estado etiquetas");
+    console.log(nuevoArray);
+    setEtiquetas(nuevoArray);
+  };
+  const quitarEtiquetaSeleccionada = (pEtiqueta) => {
+    const nuevoArray = etiquetasSeleccionadas.filter(
+      (etiqueta) => etiqueta != pEtiqueta
+    );
+    console.log("este array reemplaza el estado etiquetas");
+    console.log(nuevoArray);
+    setEtiquetasSeleccionadas(nuevoArray);
+  };
+
   const asignarEtiqueta = (etiqueta) => {
+    console.log(etiqueta);
+    if (etiquetasSeleccionadas.length === 0) {
+      quitarEtiqueta(etiqueta);
+      setEtiquetasSeleccionadas([etiqueta]);
+      return;
+    }
+
+    const repetido = etiquetasSeleccionadas.includes(etiqueta);
+
+    if (!repetido) {
+      console.log("no está en el estado");
+      quitarEtiqueta(etiqueta);
+      setEtiquetasSeleccionadas([...etiquetasSeleccionadas, etiqueta]);
+    }
+  };
+
+  const desAsignarEtiqueta = (etiqueta) => {
+    console.log(etiqueta);
     if (etiquetas.length === 0) {
-      setEtiquetas([etiqueta])
-      return
+      quitarEtiquetaSeleccionada(etiqueta);
+      setEtiquetas([etiqueta]);
+      return;
     }
 
+    const repetido = etiquetas.includes(etiqueta);
 
-    const repetido = etiquetas.map((item) => {
-      if (item === etiqueta) {
-        console.log(item);
-        return true
-      }
-      return false
-    })
-
-    console.log(repetido);
-    if (repetido) {
-      console.log("repetido igual true")
-      return
+    if (!repetido) {
+      console.log("no está en el estado");
+      quitarEtiquetaSeleccionada(etiqueta);
+      setEtiquetas([...etiquetas, etiqueta]);
     }
-    console.log("si entra el codigo acá")
-    setEtiquetas([...etiquetas, etiqueta])
-    return
-  }
+  };
 
-
-
-
-  const agregarPost = async (descripcion, comentarios, fecha_creacion, id_usuario) => {
+  const agregarPost = async (
+    descripcion,
+    comentarios,
+    fecha_creacion,
+    id_usuario
+  ) => {
     const registro = await axios
       .post(url, {
         descripcion: descripcion,
@@ -89,7 +133,6 @@ const AddProjectPage = () => {
     setShowError(false);
     redirigir();
   };
-
 
   const handleShowExito = () => setShowExito(true);
 
@@ -133,16 +176,40 @@ const AddProjectPage = () => {
                   </Form.Group>
                 </div>
 
-                <div className="contenedor-etiquetas border ">
-                  <h6 className="etiqueta" onClick={() => asignarEtiqueta("React JS")}>React JS</h6>
+                <h5>Seleccione las etiquetas correspondientes:</h5>
+                <div className="contenedor-etiquetas">
+                  <br />
+                  {etiquetas.map((item) => (
+                    <h6
+                      className="etiqueta"
+                      key={item.id_etiqueta}
+                      onClick={() => {
+                        asignarEtiqueta(item);
+                      }}
+                    >
+                      {item.nombre}
+                    </h6>
+                  ))}
                 </div>
 
-                <div className="contenedor-etiquetas-proyecto border">
-                  <h6 className="etiqueta" onClick={() => asignarEtiqueta("Javascript")} >Javascript</h6>
+                <h5>Etiquetas Seleccionadas:</h5>
+                <div className="contenedor-etiquetas-proyecto">
+                  <br />
+                  {etiquetasSeleccionadas.map((item) => (
+                    <h6
+                      className="etiqueta"
+                      key={item.id_etiqueta}
+                      onClick={() => {
+                        desAsignarEtiqueta(item);
+                      }}
+                    >
+                      {item.nombre}
+                    </h6>
+                  ))}
                 </div>
 
                 <button className="boton-carta" type="submit">
-                  <span className="texto-boton-carta" >Agregar Proyecto</span>
+                  <span className="texto-boton-carta">Agregar Proyecto</span>
                 </button>
               </Form>
             </div>
