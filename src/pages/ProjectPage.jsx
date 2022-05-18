@@ -6,7 +6,7 @@ import "./ProjectPage.css";
 import { ArrowBackUp } from "tabler-icons-react";
 
 const url = "http://localhost:3100/proyectos/proyecto";
-const urlEtiquetas = "http://localhost:3100/etiquetas/listar-etiquetas";
+const urlEtiquetas = "http://localhost:3100/etiquetas/listar-etiquetas-proyecto";
 
 const ProjectPage = () => {
   const { id_proyecto } = useParams();
@@ -40,6 +40,7 @@ const ProjectPage = () => {
         id_proyecto: id_proyecto,
       })
       .then((respuesta) => {
+        console.log(respuesta.data.data)
         setEtiquetas(respuesta.data.data);
       })
       .catch((error) => {

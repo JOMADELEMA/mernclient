@@ -7,6 +7,7 @@ import "./AddProjectPage.css";
 
 const url = "http://localhost:3100/proyectos/agregar-proyecto";
 const urlEtiquetas = "http://localhost:3100/etiquetas/listar-etiquetas";
+const urlProyectoXEtiqueta = "http://localhost:3100/etiquetas/agregar-etiquetas-proyecto";
 
 const AddProjectPage = () => {
   const navigate = useNavigate();
@@ -19,15 +20,13 @@ const AddProjectPage = () => {
   const obtenerFormulario = (e) => {
     e.preventDefault();
 
-    console.log(e.target[3].value);
+    const formData = {
+      descripcion: e.target[0].value,
+      comentarios: e.target[1].value,
+      fecha_creacion: e.target[2].value,
+    };
 
-    // const formData = {
-    //   descripcion: e.target[0].value,
-    //   comentarios: e.target[1].value,
-    //   fecha_creacion: e.target[2].value,
-    // };
-
-    // agregarPost(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
+    agregarProyecto(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
   };
 
   const listarEtiquetas = async () => {
@@ -95,7 +94,7 @@ const AddProjectPage = () => {
     }
   };
 
-  const agregarPost = async (
+  const agregarProyecto = async (
     descripcion,
     comentarios,
     fecha_creacion,
@@ -110,6 +109,7 @@ const AddProjectPage = () => {
       })
       .then((respuesta) => {
         // setExito(true);
+        agregarEtiquetas(respuesta.data.data);
         handleShowExito();
       })
       .catch((error) => {
@@ -117,6 +117,34 @@ const AddProjectPage = () => {
         handleShowError();
       });
   };
+
+
+
+
+  const agregarEtiquetas = (pId) => {
+    const repetir = etiquetasSeleccionadas.length;
+    console.log(pId);
+
+    for (let i = 0; i < repetir; i++){
+
+      axios.post(urlProyectoXEtiqueta, {
+        id_etiqueta: etiquetasSeleccionadas[i].id_etiqueta,
+        id_proyecto: pId,
+      })
+      .then((respuesta)=>{
+        console.log("exito");
+      })
+      .catch((error)=> {
+        console.log(error);
+      })
+      // console.log(i);
+    }
+    // console.log(repetir);
+
+  }
+
+
+
 
   function redirigir() {
     navigate("/projects");
