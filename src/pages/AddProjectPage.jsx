@@ -9,25 +9,58 @@ const url = "http://localhost:3100/proyectos/agregar-proyecto";
 const AddProjectPage = () => {
   const navigate = useNavigate();
 
+  const [etiquetas, setEtiquetas] = useState([]);
+  const [etiquetasSeleccionadas, setEtiquetasSeleccionadas] = useState([]);
+
   const { user } = useAuth();
 
   const obtenerFormulario = (e) => {
     e.preventDefault();
 
-    const formData = {
-      descripcion: e.target[0].value,
-      comentarios: e.target[1].value,
-      fecha_creacion: e.target[2].value,
-    };
+    console.log(e.target[3].value);
 
-    agregarPost(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
+    // const formData = {
+    //   descripcion: e.target[0].value,
+    //   comentarios: e.target[1].value,
+    //   fecha_creacion: e.target[2].value,
+    // };
+
+    // agregarPost(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
   };
+
+  const asignarEtiqueta = (etiqueta) => {
+    if (etiquetas.length === 0) {
+      setEtiquetas([etiqueta])
+      return
+    }
+
+
+    const repetido = etiquetas.map((item) => {
+      if (item === etiqueta) {
+        console.log(item);
+        return true
+      }
+      return false
+    })
+
+    console.log(repetido);
+    if (repetido) {
+      console.log("repetido igual true")
+      return
+    }
+    console.log("si entra el codigo acá")
+    setEtiquetas([...etiquetas, etiqueta])
+    return
+  }
+
+
+
 
   const agregarPost = async (descripcion, comentarios, fecha_creacion, id_usuario) => {
     const registro = await axios
       .post(url, {
         descripcion: descripcion,
-        comentarios: comentarios, 
+        comentarios: comentarios,
         fecha_creacion: fecha_creacion,
         id_usuario: id_usuario,
       })
@@ -56,6 +89,7 @@ const AddProjectPage = () => {
     setShowError(false);
     redirigir();
   };
+
 
   const handleShowExito = () => setShowExito(true);
 
@@ -99,8 +133,16 @@ const AddProjectPage = () => {
                   </Form.Group>
                 </div>
 
+                <div className="contenedor-etiquetas border ">
+                  <h6 className="etiqueta" onClick={() => asignarEtiqueta("React JS")}>React JS</h6>
+                </div>
+
+                <div className="contenedor-etiquetas-proyecto border">
+                  <h6 className="etiqueta" onClick={() => asignarEtiqueta("Javascript")} >Javascript</h6>
+                </div>
+
                 <button className="boton-carta" type="submit">
-                  <span className="texto-boton-carta">Agregar Proyecto</span>
+                  <span className="texto-boton-carta" >Agregar Proyecto</span>
                 </button>
               </Form>
             </div>
