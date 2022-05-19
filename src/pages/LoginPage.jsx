@@ -29,7 +29,7 @@ function LoginPage() {
         <Row>
           <Col className="columna">
             <div className="contenedor-carta">
-              <h1 className="text-center">Inicio de Sesión</h1>
+              <h1 className="text-center titulo">Inicio de Sesión</h1>
               <Form onSubmit={getCredentials} className="contenedor-formulario">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label className="texto-carta">Ingrese su ID de Usuario:</Form.Label>

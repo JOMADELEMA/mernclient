@@ -67,7 +67,6 @@ const ProjectPage = () => {
             <div className="titulo d-flex align-items-center">
               <ArrowBackUp
                 size="48px"
-                color="white"
                 className="boton-agregar-post"
                 onClick={() => redirigir()}
               />
