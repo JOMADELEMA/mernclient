@@ -1,5 +1,5 @@
 .titulo {
-  color: white;
+  color: #032E42;
   margin-top: 1%;
   display: flex;
   justify-content: space-between;
@@ -8,13 +8,14 @@
 
 .texto-titulo {
   /* text-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.9) !important; */
-  text-shadow: 0px 2px 5px rgba(31, 38, 135, 0.9);
+  color: #9CACBF;
 }
 
 .boton-agregar-post {
+  color: #032E42 !important;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.37);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -50,8 +51,8 @@
   height: 150px;
   flex: 1 1 350px;
 
-  background: rgba(59, 167, 255, 0.9);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: rgba(3, 46, 66, 0.9);
+  box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.37);
   /* backdrop-filter: blur( 2px );
   -webkit-backdrop-filter: blur( 2px ); */
   border-radius: 2px;
@@ -59,8 +60,8 @@
 }
 
 .contenedor-tarjeta-proyecto:hover {
-  background: rgba(59, 167, 255, 0.9);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  background: rgba(3, 46, 66, 0.5);
+  box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.37);
   /* backdrop-filter: blur( 6px );
   -webkit-backdrop-filter: blur( 6px ); */
   border-radius: 2px;
@@ -79,7 +80,8 @@
 }
 
 .cuerpo-tarjeta-proyecto {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  background-color: #9CACBF;
   border-radius: 0 0 2px 2px;
   height: 40%;
   padding: 15px;
@@ -90,17 +92,17 @@
 }
 
 .boton-dropdown {
-  background-color: white;
+  background-color: #9CACBF;
   text-decoration: none;
-  color: #0077cc;
+  color: #032E42;
   padding: 10px;
   border-radius: 2px;
 }
 
 .boton-dropdown:hover {
   text-decoration: none;
-  background-color: white;
-  color: #0077cc;
+  background-color: #2b6684;
+  color: #032E42;
 }
 
 .separador-dropdown-menu {
@@ -113,7 +115,9 @@
 }
 
 .dropdown-menu {
-  background: rgba(255, 255, 255, 0.2);
+  
+  background-color: #9CACBF !important;
+  /* background: rgba(255, 255, 255, 0.2) !important; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -122,6 +126,6 @@
 }
 
 .dropdown-item:hover {
-  background-color: #0077cc !important;
+  background-color: #032E42 !important;
   color: white !important;
 }

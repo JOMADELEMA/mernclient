@@ -66,7 +66,7 @@ const ProjectsPage = () => {
                 ProjectsPage
               </h1>
 
-              <Plus size="48px" color="white" className="boton-agregar-post" onClick={() => redirigir()} />
+              <Plus size="48px" className="boton-agregar-post" onClick={() => redirigir()} />
 
             </div>
 
