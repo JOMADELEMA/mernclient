@@ -8,7 +8,7 @@
 
 .texto-titulo {
   /* text-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.9) !important; */
-  color: #9CACBF;
+  color: #CED7E2;
 }
 
 .boton-agregar-post {
@@ -81,7 +81,7 @@
 
 .cuerpo-tarjeta-proyecto {
   /* background-color: #ffffff; */
-  background-color: #9CACBF;
+  background-color: #CED7E2;
   border-radius: 0 0 2px 2px;
   height: 40%;
   padding: 15px;
@@ -92,7 +92,7 @@
 }
 
 .boton-dropdown {
-  background-color: #9CACBF;
+  background-color: #CED7E2;
   text-decoration: none;
   color: #032E42;
   padding: 10px;
@@ -116,7 +116,7 @@
 
 .dropdown-menu {
   
-  background-color: #9CACBF !important;
+  background-color: #CED7E2 !important;
   /* background: rgba(255, 255, 255, 0.2) !important; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
