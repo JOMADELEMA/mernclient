@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Modal, Button } from "react-bootstrap";
 import "./RegisterPage.css";
 import axios from "axios";
@@ -8,8 +8,23 @@ const url = "http://localhost:3100/auth/registrar-usuario";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const [correcto, setCorrecto] = useState(true);
-  // const [exito, setExito] = useState(false);
+  const [esCorrecto, setEsCorrecto] = useState(true);
+  const [datos, setDatos] = useState({});
+
+  const registrarUsuario = (e) => {
+    setDatos(obtenerFormulario(e));
+    // setDatos(prevDatos=>obtenerFormulario(e));
+    // console.log(datos);
+  };
+
+  useEffect(() => {
+    setEsCorrecto(validarContrasena(datos.contrasena, datos.confirmContrasena));
+  }, [datos]);
+
+  useEffect(() => {
+    console.log(esCorrecto);
+    //useRef???
+  }, [esCorrecto]);
 
   const obtenerFormulario = (e) => {
     e.preventDefault();
@@ -23,54 +38,28 @@ const RegisterPage = () => {
       confirmContrasena: e.target[5].value,
     };
 
-    if (
-      confirmarContraseña(formData.contrasena, formData.confirmContrasena) ===
-      false
-    ) {
-      setCorrecto(false);
-      handleShowError();
-    }
-
-    if (
-      confirmarContraseña(formData.contrasena, formData.confirmContrasena) ===
-      true
-    ) {
-      setCorrecto(true);
-      registrarUsuario(
-        formData.id_usuario,
-        formData.nombre,
-        formData.apellido,
-        formData.id_rol,
-        formData.contrasena
-      );
-    }
-
-    console.log(
-      confirmarContraseña(formData.contrasena, formData.confirmContrasena)
-    );
+    return formData;
   };
 
-  const confirmarContraseña = (pass, passConfirm) => {
-    return pass === passConfirm;
-  };
+  const validarContrasena = (pass, passConfirm) => pass === passConfirm;
 
-  const registrarUsuario = async (
-    id_usuario,
-    nombre,
-    apellido,
-    id_rol,
-    contrasena
+  const llamarAPI = async (
+    pDatos
+    // id_usuario,
+    // nombre,
+    // apellido,
+    // id_rol,
+    // contrasena
   ) => {
     const registro = await axios
       .post(url, {
-        id_usuario: id_usuario,
-        nombre: nombre,
-        apellido: apellido,
-        id_rol: id_rol,
-        contrasena: contrasena,
+        id_usuario: pDatos.id_usuario,
+        nombre: pDatos.nombre,
+        apellido: pDatos.apellido,
+        id_rol: pDatos.id_rol,
+        contrasena: pDatos.contrasena,
       })
       .then((respuesta) => {
-        // setExito(true);
         handleShowExito();
       })
       .catch((error) => {
@@ -79,9 +68,7 @@ const RegisterPage = () => {
       });
   };
 
-  function redirigir() {
-    navigate("/login");
-  }
+  const redirigir = () => navigate("/login");
 
   const [showError, setShowError] = useState(false);
 
@@ -105,7 +92,7 @@ const RegisterPage = () => {
             <div className="contenedor-carta-registro">
               <h1 className="text-center titulo">Registrar Usuario</h1>
               <Form
-                onSubmit={obtenerFormulario}
+                onSubmit={registrarUsuario}
                 className="contenedor-formulario-registro"
               >
                 <div className="contenedor-inputs-registro">
@@ -181,7 +168,7 @@ const RegisterPage = () => {
                 </button>
               </Form>
 
-              {correcto ? (
+              {esCorrecto === true ? (
                 <></>
               ) : (
                 <>
@@ -196,7 +183,12 @@ const RegisterPage = () => {
       </Container>
 
       {/* Error con la conexión a la base de datos */}
-      <Modal show={showError} onHide={handleCloseError} animation={true} centered>
+      <Modal
+        show={showError}
+        onHide={handleCloseError}
+        animation={true}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Error</Modal.Title>
         </Modal.Header>
@@ -209,7 +201,12 @@ const RegisterPage = () => {
       </Modal>
 
       {/* Pais agregado correctamente */}
-      <Modal show={showExito} onHide={handleCloseExito} animation={true} centered>
+      <Modal
+        show={showExito}
+        onHide={handleCloseExito}
+        animation={true}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Exito</Modal.Title>
         </Modal.Header>
