@@ -98,7 +98,10 @@ const ProjectsPage = () => {
                             </li>
                             <li className="separador-dropdown-menu"></li>
                             <li className="dropdown-item">
-                              <Link className="dropdown-item" to="#">
+                              <Link
+                                className="dropdown-item"
+                                to={`./edit/${item.id_proyecto}`}
+                              >
                                 Editar
                               </Link>
                             </li>
