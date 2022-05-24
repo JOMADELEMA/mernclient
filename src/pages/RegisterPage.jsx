@@ -8,8 +8,15 @@ const url = "http://localhost:3100/auth/registrar-usuario";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const [esCorrecto, setEsCorrecto] = useState(true);
+  const [esCorrecto, setEsCorrecto] = useState("");
   const [datos, setDatos] = useState({});
+  const [showCorrecto, setShowCorrecto] = useState(true);
+
+  const handleShowCorrecto = () => setShowCorrecto(false);
+  const handleHideCorrecto = () => {
+    setShowCorrecto(true)
+    llamarAPI(datos)
+  };
 
   const registrarUsuario = (e) => {
     setDatos(obtenerFormulario(e));
@@ -22,8 +29,9 @@ const RegisterPage = () => {
   }, [datos]);
 
   useEffect(() => {
-    console.log(esCorrecto);
-    //useRef???
+    if(esCorrecto==="") return handleShowCorrecto();
+    if (!esCorrecto) return handleShowCorrecto();
+    handleHideCorrecto();
   }, [esCorrecto]);
 
   const obtenerFormulario = (e) => {
