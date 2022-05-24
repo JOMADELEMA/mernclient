@@ -7,7 +7,8 @@ import "./AddProjectPage.css";
 
 const url = "http://localhost:3100/proyectos/agregar-proyecto";
 const urlEtiquetas = "http://localhost:3100/etiquetas/listar-etiquetas";
-const urlProyectoXEtiqueta = "http://localhost:3100/etiquetas/agregar-etiquetas-proyecto";
+const urlProyectoXEtiqueta =
+  "http://localhost:3100/etiquetas/agregar-etiquetas-proyecto";
 
 const AddProjectPage = () => {
   const navigate = useNavigate();
@@ -26,14 +27,33 @@ const AddProjectPage = () => {
       fecha_creacion: e.target[2].value,
     };
 
-    agregarProyecto(formData.descripcion, formData.comentarios, formData.fecha_creacion, user.id_usuario);
+    agregarProyecto(formData);
+  };
+
+  const agregarProyecto = async (datos) => {
+    const dataRequest = {
+      descripcion: datos.descripcion,
+      comentarios: datos.comentarios,
+      fecha_creacion: datos.fecha_creacion,
+      id_usuario: user.id_usuario,
+    };
+
+    const registro = await axios
+      .post(url, dataRequest)
+      .then((respuesta) => {
+        agregarEtiquetas(respuesta.data.data);
+        handleShowExito();
+      })
+      .catch((error) => {
+        console.log(error);
+        handleShowError();
+      });
   };
 
   const listarEtiquetas = async () => {
     axios
       .get(urlEtiquetas)
       .then((respuesta) => {
-        // console.log(respuesta.data.data);
         setEtiquetas(respuesta.data.data);
       })
       .catch((error) => {
@@ -47,16 +67,12 @@ const AddProjectPage = () => {
 
   const quitarEtiqueta = (pEtiqueta) => {
     const nuevoArray = etiquetas.filter((etiqueta) => etiqueta != pEtiqueta);
-    console.log("este array reemplaza el estado etiquetas");
-    console.log(nuevoArray);
     setEtiquetas(nuevoArray);
   };
   const quitarEtiquetaSeleccionada = (pEtiqueta) => {
     const nuevoArray = etiquetasSeleccionadas.filter(
       (etiqueta) => etiqueta != pEtiqueta
     );
-    console.log("este array reemplaza el estado etiquetas");
-    console.log(nuevoArray);
     setEtiquetasSeleccionadas(nuevoArray);
   };
 
@@ -71,7 +87,6 @@ const AddProjectPage = () => {
     const repetido = etiquetasSeleccionadas.includes(etiqueta);
 
     if (!repetido) {
-      console.log("no está en el estado");
       quitarEtiqueta(etiqueta);
       setEtiquetasSeleccionadas([...etiquetasSeleccionadas, etiqueta]);
     }
@@ -88,67 +103,31 @@ const AddProjectPage = () => {
     const repetido = etiquetas.includes(etiqueta);
 
     if (!repetido) {
-      console.log("no está en el estado");
       quitarEtiquetaSeleccionada(etiqueta);
       setEtiquetas([...etiquetas, etiqueta]);
     }
   };
 
-  const agregarProyecto = async (
-    descripcion,
-    comentarios,
-    fecha_creacion,
-    id_usuario
-  ) => {
-    const registro = await axios
-      .post(url, {
-        descripcion: descripcion,
-        comentarios: comentarios,
-        fecha_creacion: fecha_creacion,
-        id_usuario: id_usuario,
-      })
-      .then((respuesta) => {
-        // setExito(true);
-        agregarEtiquetas(respuesta.data.data);
-        handleShowExito();
-      })
-      .catch((error) => {
-        console.log(error);
-        handleShowError();
-      });
-  };
-
-
-
-
   const agregarEtiquetas = (pId) => {
     const repetir = etiquetasSeleccionadas.length;
     console.log(pId);
 
-    for (let i = 0; i < repetir; i++){
-
-      axios.post(urlProyectoXEtiqueta, {
-        id_etiqueta: etiquetasSeleccionadas[i].id_etiqueta,
-        id_proyecto: pId,
-      })
-      .then((respuesta)=>{
-        console.log("exito");
-      })
-      .catch((error)=> {
-        console.log(error);
-      })
-      // console.log(i);
+    for (let i = 0; i < repetir; i++) {
+      axios
+        .post(urlProyectoXEtiqueta, {
+          id_etiqueta: etiquetasSeleccionadas[i].id_etiqueta,
+          id_proyecto: pId,
+        })
+        .then((respuesta) => {
+          console.log("exito");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    // console.log(repetir);
+  };
 
-  }
-
-
-
-
-  function redirigir() {
-    navigate("/projects");
-  }
+  const redirigir = () => navigate("/projects");
 
   const [showError, setShowError] = useState(false);
 
