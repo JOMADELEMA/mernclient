@@ -8,20 +8,12 @@ const url = "http://localhost:3100/auth/registrar-usuario";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const [esCorrecto, setEsCorrecto] = useState("");
+  const [esCorrecto, setEsCorrecto] = useState();
   const [datos, setDatos] = useState({});
-  const [showCorrecto, setShowCorrecto] = useState(true);
-
-  const handleShowCorrecto = () => setShowCorrecto(false);
-  const handleHideCorrecto = () => {
-    setShowCorrecto(true)
-    llamarAPI(datos)
-  };
+  const [esValido, setEstValido] = useState(false);
 
   const registrarUsuario = (e) => {
     setDatos(obtenerFormulario(e));
-    // setDatos(prevDatos=>obtenerFormulario(e));
-    // console.log(datos);
   };
 
   useEffect(() => {
@@ -29,9 +21,12 @@ const RegisterPage = () => {
   }, [datos]);
 
   useEffect(() => {
-    if(esCorrecto==="") return handleShowCorrecto();
-    if (!esCorrecto) return handleShowCorrecto();
-    handleHideCorrecto();
+    if (esCorrecto) {
+      setEstValido(true);
+      if (Object.keys(datos).length > 0) {
+        llamarAPI(datos);
+      }
+    }
   }, [esCorrecto]);
 
   const obtenerFormulario = (e) => {
@@ -51,14 +46,7 @@ const RegisterPage = () => {
 
   const validarContrasena = (pass, passConfirm) => pass === passConfirm;
 
-  const llamarAPI = async (
-    pDatos
-    // id_usuario,
-    // nombre,
-    // apellido,
-    // id_rol,
-    // contrasena
-  ) => {
+  const llamarAPI = async (pDatos) => {
     const registro = await axios
       .post(url, {
         id_usuario: pDatos.id_usuario,
