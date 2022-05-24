@@ -6,6 +6,7 @@ import AccountPage from "../pages/AccountPage";
 import ProjectsPage from "../pages/ProjectsPage";
 import ProjectPage from "../pages/ProjectPage";
 import AddProjectPage from "../pages/AddProjectPage";
+import EditProjectPage from "../pages/EditProjectPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import UsersPage from "../pages/admin/UsersPage";
 import PrivateRoute from "./PrivateRoute";
@@ -79,6 +80,16 @@ export default function AppRouter() {
                 </PrivateRoute>
               }
             />
+
+            <Route path="/projects/edit/:id_proyecto"
+              element={
+                <PrivateRoute>
+                  <EditProjectPage />
+                </PrivateRoute>
+              }
+            >
+
+            </Route>
             <Route
               exact
               path="/admin/users"
@@ -95,15 +106,3 @@ export default function AppRouter() {
   );
 }
 
-//Ejemplo de uso de rutas
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// <Router>
-//   <Routes>
-//     <Route exact path="/" element={<Index />} />
-//     <Route path="/aboutus" element={<AboutMe />} />
-//     <Route path="/contactus" element={<Contacto />} />
-//     <Route path="/proyectos" element={<Proyectos />} />
-//     <Route path="/shieldui" element={<ShieldUI />} />
-//   </Routes>
-// </Router>;
